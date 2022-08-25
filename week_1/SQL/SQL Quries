@@ -1,4 +1,15 @@
+/*Part 2:*/
+
 Select query for a specific columns
 
 SELECT column, another_column, …
 FROM mytable;
+
+/*Part 2:*/
+Select query with constraints
+
+SELECT column, another_column, …
+FROM mytable
+WHERE condition
+    AND/OR another_condition
+    AND/OR …;
