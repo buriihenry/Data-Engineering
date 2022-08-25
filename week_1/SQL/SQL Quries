@@ -41,3 +41,9 @@ SELECT DISTINCT column, another_column, …
 FROM mytable
 WHERE condition(s);
 
+/*Part 4*/
+Select query with ordered results
+SELECT column, another_column, …
+FROM mytable
+WHERE condition(s)
+ORDER BY column ASC/DESC;
