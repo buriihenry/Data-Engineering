@@ -13,3 +13,4 @@ FROM mytable
 WHERE condition
     AND/OR another_condition
     AND/OR …;
+
