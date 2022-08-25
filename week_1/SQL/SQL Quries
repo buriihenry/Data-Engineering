@@ -26,4 +26,12 @@ WHERE condition
 
 SELECT title
 FROM Movies
-WHERE title LIKE "%Toy%" (/*Returns all the movies that start with TOY*/)
+WHERE title LIKE "%Toy%"; (/*Returns all the movies that start with TOY*/)
+
+SELECT title, director
+FROM Movies
+WHERE director ="John Lasseter"; (/*Returns all the movies Directed by "John"*/)
+
+SELECT title, director
+FROM Movies
+WHERE director !="John Lasseter"; (/*Returns all the movies Not Directed by "John"*/)
