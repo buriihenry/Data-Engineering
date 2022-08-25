@@ -35,3 +35,9 @@ WHERE director ="John Lasseter"; (/*Returns all the movies Directed by "John"*/)
 SELECT title, director
 FROM Movies
 WHERE director !="John Lasseter"; (/*Returns all the movies Not Directed by "John"*/)
+
+/*Part 3*/
+SELECT DISTINCT column, another_column, …
+FROM mytable
+WHERE condition(s);
+
