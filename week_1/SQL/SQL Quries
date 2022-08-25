@@ -1,0 +1,4 @@
+Select query for a specific columns
+
+SELECT column, another_column, …
+FROM mytable;
