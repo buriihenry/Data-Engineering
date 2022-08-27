@@ -47,3 +47,6 @@ SELECT column, another_column, …
 FROM mytable
 WHERE condition(s)
 ORDER BY column ASC/DESC;
+
+
+/*Part 5*/
