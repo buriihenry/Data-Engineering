@@ -29,7 +29,7 @@ docker run -it \
   -v $(pwd)/ny_taxi_postgres_data/:/var/lib/postgresql/data \
   -p 5432:5432 \
   postgres:13
-  
+
 #docker
 docker run -it \
   -e POSTGRES_USER="root" \
@@ -58,3 +58,5 @@ docker run -it \
   --network=pg-network \
   --name pgadmin-3 \
   dpage/pgadmin5
+
+  export GOOGLE_APPLICATION_CREDENTIALS="/c/Users/Lenovo/Downloads/eloquent-theme-360913-895faec0a947.json"
