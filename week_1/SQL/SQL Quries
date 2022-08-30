@@ -50,4 +50,22 @@ ORDER BY column ASC/DESC;
 
 
 /*Part 5*/
-Coming soon
+
+SELECT column, another_table_column, …
+FROM mytable
+INNER JOIN another_table 
+    ON mytable.id = another_table.id
+WHERE condition(s)
+ORDER BY column, … ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+
+SELECT Title, Domestic_sales,International_sales
+FROM Movies
+INNER JOIN Boxoffice
+    ON Movies.id=Boxoffice.Movie_id;
+
+SELECT Title,Rating
+FROM Movies
+INNER JOIN Boxoffice
+ON Movies.id=Boxoffice.Movie_id
+ORDER BY Rating DESC;
