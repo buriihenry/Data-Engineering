@@ -88,4 +88,9 @@ SELECT name
 FROM city
 WHERE name LIKE 'P%'
   OR name LIKE '%s';
+/*Part 8*/
+Fetch names of cities that start with any letter followed by 'ublin' (like Dublin in Ireland or Lublin in Poland):
+SELECT name
+FROM city
+WHERE name LIKE '_ublin';
 
