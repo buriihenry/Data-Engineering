@@ -81,3 +81,11 @@ INNER/LEFT/RIGHT/FULL JOIN another_table
 WHERE condition(s)
 ORDER BY column, … ASC/DESC
 LIMIT num_limit OFFSET num_offset;
+
+/*Part 7*/
+Fetch names of cities that start with a 'P' or end with an 's':
+SELECT name
+FROM city
+WHERE name LIKE 'P%'
+  OR name LIKE '%s';
+
