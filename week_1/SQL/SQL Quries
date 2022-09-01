@@ -69,3 +69,15 @@ FROM Movies
 INNER JOIN Boxoffice
 ON Movies.id=Boxoffice.Movie_id
 ORDER BY Rating DESC;
+
+/*Part 6*/
+
+Select query with LEFT/RIGHT/FULL JOINs on multiple tables
+
+SELECT column, another_column, …
+FROM mytable
+INNER/LEFT/RIGHT/FULL JOIN another_table 
+    ON mytable.id = another_table.matching_id
+WHERE condition(s)
+ORDER BY column, … ASC/DESC
+LIMIT num_limit OFFSET num_offset;
