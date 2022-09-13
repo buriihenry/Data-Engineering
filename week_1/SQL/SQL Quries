@@ -93,4 +93,5 @@ Fetch names of cities that start with any letter followed by 'ublin' (like Dubli
 SELECT name
 FROM city
 WHERE name LIKE '_ublin';
+/*Part 9*/
 
