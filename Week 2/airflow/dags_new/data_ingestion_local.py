@@ -7,6 +7,8 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
 
+AIRFLOW_HOME = os.environ.get("AIRFLOW_HOME", "/opt/airflow/")
+
 
 local_workflow = DAG(
     "LocalIngestionDag",
@@ -15,16 +17,18 @@ local_workflow = DAG(
     
 )
 
+url= 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-01.parquet'
+
 with local_workflow:
 
     wget_task = BashOperator(
         task_id='wget',
-        bash_command='echo "hello-world"'
+        bash_command=f'curl -sSL {url} > {AIRFLOW_HOME}/output.parquet'
     )
 
     ingest_task = BashOperator(
         task_id='ingest',
-        bash_command='echo "pwd"'
+        bash_command=f'ls {AIRFLOW_HOME}'
     )
 
     wget_task >> ingest_task
