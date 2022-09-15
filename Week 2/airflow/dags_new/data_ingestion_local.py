@@ -17,13 +17,17 @@ local_workflow = DAG(
     
 )
 
-url= 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-01.parquet'
+# url= 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-01.parquet'
+URL_PREFIX='https://d37ci6vzurychx.cloudfront.net/trip-data'
+URL_TEMPLATE= URL_PREFIX +'/yellow_tripdata_{{ execution_date.strftime(\'%Y-%m\') }}.parquet'
+OUTPUT_FILE_TEMPLATE = AIRFLOW_HOME + '/output_{{ execution_date.strftime(\'%Y-%m\') }}.parquet'
+
 
 with local_workflow:
 
     wget_task = BashOperator(
         task_id='wget',
-        bash_command=f'curl -sSL {url} > {AIRFLOW_HOME}/output.parquet'
+        bash_command=f'curl -sSL {URL_TEMPLATE} > {OUTPUT_FILE_TEMPLATE}'
     )
 
     ingest_task = BashOperator(
