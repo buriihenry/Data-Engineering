@@ -6,16 +6,16 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 
-def ingest_callable(user, password, host, port, db, table_name, parquet_file, execution_date):
-    print(table_name, parquet_file, execution_date)
+def ingest_callable(user, password, host, port, db, table_name, csv_file, execution_date):
+    print(table_name, csv_file, execution_date)
 
     engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}')
     engine.connect()
 
-    print('connection established successfully, inserting data...')
+    # print('connection established successfully, inserting data...')
 
     # t_start = time()
-    # df_iter = pd.read_parquet(parquet_file, iterator=True)
+    # df_iter = pd.read_csv(csv_file, iterator=True, chunksize=100000)
 
     # df = next(df_iter)
 
