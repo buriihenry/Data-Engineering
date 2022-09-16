@@ -47,7 +47,7 @@ with local_workflow:
             port=PG_PORT,
             db=PG_DATABASE,
             table_name=TABLE_NAME_TEMPLATE,
-            csv_file=OUTPUT_FILE_TEMPLATE
+            parquet_file=OUTPUT_FILE_TEMPLATE
         ),
     )
     wget_task >> ingest_task
