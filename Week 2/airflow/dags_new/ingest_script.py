@@ -26,23 +26,23 @@ def ingest_callable(user, password, host, port, db, table_name, parquet_file, ex
 
     df.to_sql(name=table_name, con=engine, if_exists='append')
 
-    # t_end = time()
-    # print('inserted the first chunk, took %.3f second' % (t_end - t_start))
+    t_end = time()
+    print('inserted the first chunk, took %.3f second' % (t_end - t_start))
 
-    # while True: 
-    #     t_start = time()
+    while True: 
+        t_start = time()
 
-    #     try:
-    #         df = next(df_iter)
-    #     except StopIteration:
-    #         print("completed")
-    #         break
+        try:
+            df = next(df_iter)
+        except StopIteration:
+            print("completed")
+            break
 
-    #     df.tpep_pickup_datetime = pd.to_datetime(df.tpep_pickup_datetime)
-    #     df.tpep_dropoff_datetime = pd.to_datetime(df.tpep_dropoff_datetime)
+        df.tpep_pickup_datetime = pd.to_datetime(df.tpep_pickup_datetime)
+        df.tpep_dropoff_datetime = pd.to_datetime(df.tpep_dropoff_datetime)
 
-    #     df.to_sql(name=table_name, con=engine, if_exists='append')
+        df.to_sql(name=table_name, con=engine, if_exists='append')
 
-    #     t_end = time()
+        t_end = time()
 
-    #     print('inserted another chunk, took %.3f second' % (t_end - t_start))
+        print('inserted another chunk, took %.3f second' % (t_end - t_start))
