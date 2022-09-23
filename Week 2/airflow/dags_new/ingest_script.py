@@ -19,8 +19,8 @@ def ingest_callable(user, password, host, port, db, table_name, parquet_file, ex
 
     df = next(df_iter)
 
-    # df.tpep_pickup_datetime = pd.to_datetime(df.tpep_pickup_datetime)
-    # df.tpep_dropoff_datetime = pd.to_datetime(df.tpep_dropoff_datetime)
+    df.tpep_pickup_datetime = pd.to_datetime(df.tpep_pickup_datetime)
+    df.tpep_dropoff_datetime = pd.to_datetime(df.tpep_dropoff_datetime)
 
     df.head(n=0).to_sql(name=table_name, con=engine, if_exists='replace')
 
