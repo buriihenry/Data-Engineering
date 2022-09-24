@@ -10,6 +10,7 @@ OPTIONS (
 );
 
 -- Check yellow trip data
+-- except exludes the column name
 
 SELECT * except(airport_fee) FROM `bamboo-autumn-360913.nytaxi.external_yellow_tripdata` LIMIT 1000;
 
