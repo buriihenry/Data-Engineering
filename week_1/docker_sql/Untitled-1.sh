@@ -35,6 +35,15 @@ docker run -it \
   -e POSTGRES_USER="root" \
   -e POSTGRES_PASSWORD="root" \
   -e POSTGRES_DB="ny_taxi" \
+  --volume //d/henry/data_engineering/week_1_refresher/week_1/ny_taxi_postgres_data/:/var/lib/postgresql/data \
+  -p 5432:5432 \
+  postgres:13
+
+#docker
+docker run -it \
+  -e POSTGRES_USER="root" \
+  -e POSTGRES_PASSWORD="root" \
+  -e POSTGRES_DB="ny_taxi" \
   --volume //d/henry/data_engineering/data_talks_zoomcamp/week_1/docker_sql/ny_taxi_postgres_data/:/var/lib/postgresql/data \
   -p 5432:5432 \
   postgres:13
