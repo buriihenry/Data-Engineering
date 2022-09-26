@@ -1,6 +1,8 @@
 -- Big Query SQL 
--- bamboo-autumn-360913 (Project_name)
+
 -- Creating external table referring to gcs path
+-- bamboo-autumn-360913 (Project_name)
+-- nytaxi (Dataset Name)
 CREATE OR REPLACE EXTERNAL TABLE `bamboo-autumn-360913.nytaxi.external_yellow_tripdata`
 OPTIONS (
   format = 'parquet',
