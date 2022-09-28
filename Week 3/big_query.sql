@@ -1,4 +1,4 @@
-
+-- Big Query SQL 
 -- Creating external table referring to gcs path
 CREATE OR REPLACE EXTERNAL TABLE `bamboo-autumn-360913.nytaxi.external_yellow_tripdata`
 OPTIONS (
