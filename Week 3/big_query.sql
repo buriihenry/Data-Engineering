@@ -17,3 +17,9 @@ SELECT * except(airport_fee) FROM `bamboo-autumn-360913.nytaxi.external_yellow_t
 -- Create a non partitioned table from external table
 CREATE OR REPLACE TABLE bamboo-autumn-360913.nytaxi.yellow_tripdata_non_partitoned AS
 SELECT * except(airport_fee) FROM bamboo-autumn-360913.nytaxi.external_yellow_tripdata;
+
+-- Create a partitioned table from external table
+CREATE OR REPLACE TABLE bamboo-autumn-360913.nytaxi.yellow_tripdata_partitoned
+PARTITION BY
+  DATE(tpep_pickup_datetime) AS
+SELECT * except(airport_fee) FROM bamboo-autumn-360913.nytaxi.external_yellow_tripdata;
