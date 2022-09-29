@@ -29,3 +29,20 @@ SELECT * except(airport_fee) FROM bamboo-autumn-360913.nytaxi.external_yellow_tr
 SELECT DISTINCT(VendorID)
 FROM bamboo-autumn-360913.nytaxi.yellow_tripdata_non_partitoned
 WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2019-06-30';
+
+-- Scanning ~106 MB of DATA
+SELECT DISTINCT(VendorID)
+FROM bamboo-autumn-360913.nytaxi.yellow_tripdata_partitoned
+WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2019-06-30';
+
+-- Let's look into the partitons
+SELECT table_name, partition_id, total_rows
+FROM `nytaxi.INFORMATION_SCHEMA.PARTITIONS`
+WHERE table_name = 'yellow_tripdata_partitoned'
+ORDER BY total_rows DESC;
+
+-- Creating a partition and cluster table
+CREATE OR REPLACE TABLE bamboo-autumn-360913.nytaxi.yellow_tripdata_partitoned_clustered
+PARTITION BY DATE(tpep_pickup_datetime)
+CLUSTER BY VendorID AS
+SELECT * except(airport_fee) FROM bamboo-autumn-360913.nytaxi.external_yellow_tripdata;
