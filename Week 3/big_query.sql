@@ -23,3 +23,9 @@ CREATE OR REPLACE TABLE bamboo-autumn-360913.nytaxi.yellow_tripdata_partitoned
 PARTITION BY
   DATE(tpep_pickup_datetime) AS
 SELECT * except(airport_fee) FROM bamboo-autumn-360913.nytaxi.external_yellow_tripdata;
+
+-- Impact of partition
+-- Scanning 1.6GB of data
+SELECT DISTINCT(VendorID)
+FROM bamboo-autumn-360913.nytaxi.yellow_tripdata_non_partitoned
+WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2019-06-30';
