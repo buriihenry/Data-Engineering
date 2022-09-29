@@ -46,3 +46,15 @@ CREATE OR REPLACE TABLE bamboo-autumn-360913.nytaxi.yellow_tripdata_partitoned_c
 PARTITION BY DATE(tpep_pickup_datetime)
 CLUSTER BY VendorID AS
 SELECT * except(airport_fee) FROM bamboo-autumn-360913.nytaxi.external_yellow_tripdata;
+
+-- Query scans 1.1 GB
+SELECT count(*) as trips
+FROM bamboo-autumn-360913.nytaxi.yellow_tripdata_partitoned
+WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2020-12-31'
+  AND VendorID=1;
+
+-- Query scans 864.5 MB
+SELECT count(*) as trips
+FROM bamboo-autumn-360913.nytaxi.yellow_tripdata_partitoned_clustered
+WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2020-12-31'
+  AND VendorID=1;
