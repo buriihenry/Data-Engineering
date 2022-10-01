@@ -47,3 +47,50 @@ FROM
 WHERE
 tip_amount IS NOT NULL
 ));
+
+-- PREDICT THE MODEL
+SELECT
+*
+FROM
+ML.PREDICT(MODEL `bamboo-autumn-360913.nytaxi.tip_model`,
+(
+SELECT
+*
+FROM
+`bamboo-autumn-360913.nytaxi.yellow_tripdata_ml`
+WHERE
+tip_amount IS NOT NULL
+));
+
+
+-- PREDICT AND EXPLAIN
+SELECT
+*
+FROM
+ML.EXPLAIN_PREDICT(MODEL `bamboo-autumn-360913.nytaxi.tip_model`,
+(
+SELECT
+*
+FROM
+`bamboo-autumn-360913.nytaxi.yellow_tripdata_ml`
+WHERE
+tip_amount IS NOT NULL
+), STRUCT(3 as top_k_features));
+
+
+-- HYPER PARAM TUNNING
+CREATE OR REPLACE MODEL `bamboo-autumn-360913.nytaxi.tip_hyperparam_model`
+OPTIONS
+(model_type='linear_reg',
+input_label_cols=['tip_amount'],
+DATA_SPLIT_METHOD='AUTO_SPLIT',
+num_trials=5,
+max_parallel_trials=2,
+l1_reg=hparam_range(0, 20),
+l2_reg=hparam_candidates([0, 0.1, 1, 10])) AS
+SELECT
+*
+FROM
+`bamboo-autumn-360913.nytaxi.yellow_tripdata_ml`
+WHERE
+tip_amount IS NOT NULL;
