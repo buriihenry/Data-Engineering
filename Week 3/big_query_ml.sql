@@ -31,3 +31,19 @@ FROM
 WHERE
 tip_amount IS NOT NULL;
 
+-- CHECK FEATURES
+SELECT * FROM ML.FEATURE_INFO(MODEL `bamboo-autumn-360913.nytaxi.tip_model`);
+
+-- EVALUATE THE MODEL
+SELECT
+*
+FROM
+ML.EVALUATE(MODEL `bamboo-autumn-360913-ny.nytaxi.tip_model`,
+(
+SELECT
+*
+FROM
+`bamboo-autumn-360913.nytaxi.yellow_tripdata_ml`
+WHERE
+tip_amount IS NOT NULL
+));
