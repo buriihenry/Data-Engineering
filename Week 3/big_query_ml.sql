@@ -94,5 +94,3 @@ FROM
 `bamboo-autumn-360913.nytaxi.yellow_tripdata_ml`
 WHERE
 tip_amount IS NOT NULL;
-
--- bigquery for ML
