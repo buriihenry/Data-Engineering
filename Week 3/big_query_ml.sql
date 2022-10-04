@@ -95,4 +95,4 @@ FROM
 WHERE
 tip_amount IS NOT NULL;
 
---
+-- bigquery for ML
