@@ -1,6 +1,4 @@
-logs
-plugins
-ny_taxi_postgres_data
+
 target/
 dbt_modules/
 logs/
