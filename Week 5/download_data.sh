@@ -20,6 +20,6 @@ for MONTH in {1..12}; do
   mkdir -p ${LOCAL_PREFIX}
   wget ${URL} -O ${LOCAL_PATH}
 
-  echo "compressing ${LOCAL_PATH}"
-  gzip ${LOCAL_PATH}
+  # echo "compressing ${LOCAL_PATH}"
+  # gzip ${LOCAL_PATH}
 done
