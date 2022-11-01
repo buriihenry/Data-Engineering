@@ -1,0 +1,7 @@
+kafka-python==1.4.6
+python3
+confluent_kafka
+requests
+avro
+faust
+fastavro
