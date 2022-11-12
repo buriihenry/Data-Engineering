@@ -6,3 +6,4 @@ dbt_modules/
 logs/
 dbt_packages/
 data
+__pycache__
